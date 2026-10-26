@@ -1,0 +1,554 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Kahin Hasan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout concept: full-bleed colour-blocked bands, like painted plant signage. Signal-yellow hero with oversized type, night band with a live ball-mill simulator, concrete bands for the record. */
+:root {
+  --bg: #E9EAE6;
+  --surface: #F6F6F2;
+  --ink: #0C1118;
+  --muted: #566068;
+  --line: #C4C6C0;
+  --blue: #2340FF;
+  --on-blue: #FFFFFF;
+  --sun: #B8BAB4;
+  --on-sun: #0C1118;
+  --night: #0C1118;
+  --on-night: #ECEDE8;
+  --night-muted: #98A3AE;
+  --night-line: #26303B;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C1118; --surface: #131B25; --ink: #ECEDE8; --muted: #9AA3AD; --line: #26303B;
+    --blue: #8C9CFF; --on-blue: #0C1118; --night: #070B10; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C1118; --surface: #131B25; --ink: #ECEDE8; --muted: #9AA3AD; --line: #26303B;
+  --blue: #8C9CFF; --on-blue: #0C1118; --night: #070B10; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font-body); margin: 0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.in { max-width: 1200px; margin: 0 auto; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.sun :focus-visible, .night :focus-visible { outline-color: currentColor; }
+h1, h2, h3 { font-family: var(--font-display); text-transform: uppercase; line-height: 0.9; margin: 0; text-wrap: balance; font-weight: 900; }
+.label { font: 600 12px/1.4 var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* bands */
+.sun { background: var(--sun); color: var(--on-sun); }
+.night { background: var(--night); color: var(--on-night); }
+
+/* hero */
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; padding-block: 20px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.top nav a { font: 600 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+.top nav a:hover { border-bottom-color: currentColor; }
+.hero { position: relative; padding-block: 16px 36px; }
+.name { font-size: clamp(84px, 21vw, 280px); letter-spacing: -0.02em; line-height: 0.82; margin: 0; }
+.name span { display: block; animation: rise 0.7s cubic-bezier(.2,.8,.2,1) both; }
+.name span + span { animation-delay: 0.12s; color: transparent; -webkit-text-stroke: clamp(2px, 0.5vw, 6px) var(--on-sun); }
+@keyframes rise { from { transform: translateY(50px); } to { transform: none; } }
+.hero-foot { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px 48px; margin-top: 28px; align-items: end; }
+.hero-foot p { margin: 0; font-size: clamp(18px, 2.2vw, 24px); line-height: 1.35; font-weight: 500; max-width: 34ch; }
+.hero-foot .meta { display: grid; gap: 4px; justify-items: start; }
+.badge { position: absolute; right: 0; top: 8px; width: clamp(104px, 16vw, 168px); aspect-ratio: 1; }
+.badge svg { width: 100%; height: 100%; display: block; }
+.badge .ring { transform-origin: 50% 50%; animation: spin 24s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.badge text.ring-t { font: 600 10.5px var(--font-mono); letter-spacing: 0.14em; fill: var(--on-sun); text-transform: uppercase; }
+.badge text.core { font: 900 46px var(--font-display); fill: var(--on-sun); }
+.badge text.core-s { font: 600 9px var(--font-mono); letter-spacing: 0.2em; fill: var(--on-sun); }
+
+/* marquee */
+.marquee { background: var(--night); color: var(--sun); overflow: hidden; border-block: 3px solid var(--on-sun); }
+.marquee .track { display: flex; width: max-content; animation: slide 36s linear infinite; }
+.marquee span { font: 900 clamp(28px, 4.5vw, 52px)/1 var(--font-display); text-transform: uppercase; padding: 14px 0; white-space: nowrap; }
+.marquee span::after { content: "✦"; margin-inline: 28px; color: var(--on-night); font-size: 0.6em; vertical-align: 0.12em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* stats */
+.stats { padding-block: 64px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 32px 24px; }
+.stat { border-top: 4px solid var(--ink); padding-top: 12px; min-width: 0; }
+.stat b { display: block; font: 900 clamp(72px, 10vw, 128px)/0.9 var(--font-display); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 0.4em; margin-left: 4px; color: var(--blue); }
+.stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 15px; max-width: 24ch; }
+
+/* lab */
+.lab { padding-block: 72px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(56px, 10vw, 136px); letter-spacing: -0.01em; }
+.sec-head .label { color: var(--night-muted); }
+.sim { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); gap: 40px; align-items: center; }
+.drum { width: 100%; max-width: 460px; aspect-ratio: 1; display: block; margin: 0 auto; }
+.panel h3 { font-size: clamp(36px, 5vw, 56px); margin-bottom: 12px; }
+.panel p { color: var(--night-muted); max-width: 52ch; margin: 0 0 18px; }
+.ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.ctl label { font: 600 12px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; }
+.ctl input[type=range] { flex: 1 1 200px; min-width: 0; height: 32px; accent-color: var(--sun); }
+.big { font: 900 clamp(56px, 8vw, 88px)/0.9 var(--font-display); color: var(--sun); min-width: 3.3ch; font-variant-numeric: tabular-nums; }
+.regime { display: inline-block; margin-top: 10px; background: var(--sun); color: var(--on-sun); font: 600 12px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; }
+.regime-note { margin: 12px 0 0; color: var(--on-night); max-width: 52ch; font-size: 15px; min-height: 3.2em; }
+.rule { height: 1px; background: var(--night-line); margin-block: 64px; border: 0; }
+.mixbar { display: flex; height: clamp(56px, 9vw, 96px); border: 3px solid var(--on-night); margin-top: 18px; }
+.mixbar div { min-width: 0; transition: width 0.25s ease; }
+.m-cl { background: var(--on-night); }
+.m-gy { background: var(--sun); }
+.m-sc { background: repeating-linear-gradient(135deg, #5C74FF 0 8px, #2340FF 8px 16px); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 14px; font: 500 13px var(--font-mono); font-variant-numeric: tabular-nums; }
+.legend i { display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; border: 1px solid var(--on-night); }
+.fine { margin: 14px 0 0; font: 400 12px var(--font-mono); letter-spacing: 0.06em; color: var(--night-muted); }
+
+/* career */
+.career { padding-block: 80px 24px; }
+.career .sec-head .label, .craft .sec-head .label, .work .sec-head .label { color: var(--muted); }
+.row { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 8px 40px; padding-block: 28px; border-top: 4px solid var(--ink); }
+.yr { font: 900 clamp(88px, 15vw, 190px)/0.8 var(--font-display); color: transparent; -webkit-text-stroke: 2px var(--ink); letter-spacing: -0.01em; }
+.yr.live { color: var(--blue); -webkit-text-stroke: 0; }
+.row h3 { font-size: clamp(34px, 4.6vw, 56px); margin-bottom: 10px; }
+.row .co { font: 600 13px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.row p { margin: 0 0 12px; max-width: 60ch; }
+.now { display: inline-block; background: var(--blue); color: var(--on-blue); font: 600 11px var(--font-mono); letter-spacing: 0.14em; padding: 3px 9px; margin-left: 12px; vertical-align: 0.4em; }
+
+/* craft tiles */
+.craft { padding-block: 56px 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 0; }
+.tile { padding: 28px 26px 34px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; transition: transform 0.2s ease; min-width: 0; }
+.tile:hover { transform: translateY(-6px); }
+.tile:nth-child(3n+1) { background: var(--sun); color: var(--on-sun); }
+.tile:nth-child(3n+2) { background: var(--night); color: var(--on-night); }
+.tile:nth-child(3n) { background: var(--blue); color: var(--on-blue); }
+.tile h3 { font-size: clamp(40px, 5vw, 60px); }
+.tile p { margin: 0; max-width: 34ch; font-size: 15px; line-height: 1.5; }
+.tile .label { opacity: 0.75; }
+
+/* work */
+.work { padding-block: 88px 24px; }
+.proj .num { font: 900 clamp(110px, 18vw, 220px)/0.8 var(--font-display); color: var(--blue); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.proj .num small { font-size: 0.28em; color: var(--ink); letter-spacing: 0; margin-left: 8px; }
+.proj h3 { font-size: clamp(30px, 4vw, 44px); margin: 16px 0 12px; }
+.proj p { max-width: 50ch; margin: 0 0 10px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { border-top: 4px solid var(--ink); padding-block: 16px 20px; }
+.list b { display: block; font: 900 clamp(26px, 3.4vw, 36px)/1 var(--font-display); text-transform: uppercase; }
+.list span { color: var(--muted); font-size: 15px; }
+
+/* contact */
+.contact { padding-block: 72px 40px; }
+.contact h2 { font-size: clamp(72px, 17vw, 240px); letter-spacing: -0.02em; line-height: 0.82; }
+.contact h2 em { font-style: normal; color: transparent; -webkit-text-stroke: clamp(2px, 0.5vw, 6px) var(--on-sun); }
+.cgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px 48px; margin-top: 44px; }
+.cgrid .item { border-top: 4px solid var(--on-sun); padding-top: 12px; min-width: 0; }
+.cgrid a.big-link { display: inline-block; margin-top: 6px; font: 900 clamp(28px, 4vw, 44px)/1 var(--font-display); text-transform: uppercase; overflow-wrap: anywhere; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 8px; }
+.mail code { font: 600 clamp(16px, 2.4vw, 22px) var(--font-mono); overflow-wrap: anywhere; user-select: all; }
+button { font: 600 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; background: var(--on-sun); color: var(--sun); border: 0; padding: 9px 16px; cursor: pointer; }
+button:hover { background: var(--blue); color: var(--on-blue); }
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--on-sun); }
+
+/* institutions */
+.inst-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 0 40px; margin-bottom: 56px; }
+.inst { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 20px; align-items: center; padding-block: 24px; border-top: 4px solid var(--ink); min-width: 0; }
+.inst h3 { font-size: clamp(28px, 3.6vw, 40px); line-height: 0.95; margin-bottom: 6px; }
+.inst .role { margin: 0; color: var(--muted); font-size: 15px; }
+.inst .when { margin: 6px 0 0; font: 600 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.inst .deg { display: block; color: var(--blue); margin-bottom: 6px; }
+.logo { width: 96px; height: 96px; display: grid; place-items: center; font: 900 30px/1 var(--font-display); letter-spacing: 0.02em; border: 4px solid var(--ink); text-transform: uppercase; }
+.logo[aria-hidden] { overflow: hidden; }
+.l-sun { background: var(--sun); color: var(--on-sun); border-color: var(--on-sun); }
+.l-ink { background: var(--night); color: var(--on-night); border-color: var(--night); }
+.l-blue { background: var(--blue); color: var(--on-blue); border-color: var(--blue); }
+.l-red { background: #D7263D; color: #fff; border-color: #D7263D; }
+.work .inst-list { margin-bottom: 72px; }
+.learn { padding-block: 24px 40px; }
+.learn .sec-head .label { color: var(--muted); }
+.train { padding-bottom: 88px; }
+
+@media (max-width: 800px) {
+  .sim { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .hero-foot { grid-template-columns: minmax(0, 1fr); }
+  .badge { top: 0; }
+  .lab, .work { padding-block: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .name span, .badge .ring, .marquee .track { animation: none; }
+  .marquee .track { width: auto; flex-wrap: wrap; }
+  .mixbar div, .tile { transition: none; }
+}
+</style>
+
+<header class="sun">
+  <div class="in">
+    <div class="top">
+      <span class="label">Kahin Hasan · Cement &amp; Process</span>
+      <nav aria-label="Sections">
+        <a href="#lab">Lab</a>
+        <a href="#career">Career</a>
+        <a href="#craft">Craft</a>
+        <a href="#work">Work</a>
+        <a href="#education">Education</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="hero">
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 160 160">
+          <defs><path id="ring" d="M80 80 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0"/></defs>
+          <g class="ring"><text class="ring-t"><textPath href="#ring" textLength="384" lengthAdjust="spacing">Clinker factor · SEEC · S&amp;OP · SAP PP · ISO · </textPath></text></g>
+          <text class="core" x="80" y="92" text-anchor="middle">9+</text>
+          <text class="core-s" x="80" y="108" text-anchor="middle">YEARS</text>
+        </svg>
+      </div>
+      <h1 class="name"><span>Kahin</span><span>Hasan</span></h1>
+      <div class="hero-foot">
+        <p>Industrial and production engineer. I make cement mills grind more with less clinker and less power.</p>
+        <div class="meta">
+          <span class="label">Manager, Production Process</span>
+          <span class="label">Confidence Cement PLC</span>
+          <span class="label">Chattogram, Bangladesh</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Clinker factor</span><span>SEEC optimization</span><span>S&amp;OP planning</span><span>SAP PP</span><span>Debottlenecking</span><span>ISO-integrated systems</span><span>HFACS root cause</span>
+    <span>Clinker factor</span><span>SEEC optimization</span><span>S&amp;OP planning</span><span>SAP PP</span><span>Debottlenecking</span><span>ISO-integrated systems</span><span>HFACS root cause</span>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="in">
+    <div class="stat-grid">
+      <div class="stat"><b>9<small>+</small></b><span>years in cement operations</span></div>
+      <div class="stat"><b>2017</b><span>first day, as an intern</span></div>
+      <div class="stat"><b>2</b><span>Meghnaghat plants led on grinding</span></div>
+      <div class="stat"><b>1350<small>°C</small></b><span>range of a temperature probe I built</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="lab night" id="lab">
+  <div class="in">
+    <div class="sec-head"><h2>The mill</h2><span class="label">Live simulation · illustrative</span></div>
+    <div class="sim">
+      <canvas id="mill" class="drum" role="img" aria-label="Animated cross-section of a rotating ball mill with steel balls tumbling inside."></canvas>
+      <div class="panel">
+        <h3>Speed decides the grind</h3>
+        <p>A ball mill grinds by lifting steel balls and letting them fall. Too slow and they only roll. Near critical speed they stick to the shell. Plants run in between. Drag the slider and watch the charge change.</p>
+        <div class="ctl">
+          <label for="spd">Mill speed, % of critical</label>
+          <input id="spd" type="range" min="40" max="115" step="1" value="75" aria-describedby="rnote">
+          <div class="big" id="spdv" aria-hidden="true">75%</div>
+        </div>
+        <span class="regime" id="regime">Cataracting</span>
+        <p class="regime-note" id="rnote"></p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="sec-head"><h2>Clinker factor</h2><span class="label">Move it, see the mix</span></div>
+    <div class="panel">
+      <div class="ctl">
+        <label for="cf">Clinker share of a tonne of cement</label>
+        <input id="cf" type="range" min="60" max="95" step="1" value="80" aria-describedby="readout">
+        <div class="big" id="cfv" aria-hidden="true">80%</div>
+      </div>
+      <div class="mixbar" aria-hidden="true">
+        <div class="m-cl" id="bcl" style="width:80%"></div>
+        <div class="m-gy" id="bgy" style="width:4%"></div>
+        <div class="m-sc" id="bsc" style="width:16%"></div>
+      </div>
+      <div class="legend">
+        <span><i class="m-cl"></i>Clinker <b id="lcl">80</b>%</span>
+        <span><i class="m-gy"></i>Gypsum <b>4</b>%</span>
+        <span><i class="m-sc"></i>Fly ash, limestone, slag <b id="lsc">16</b>%</span>
+      </div>
+      <p class="regime-note" id="readout" style="margin-top:18px"></p>
+      <p class="fine">Illustrative mix with gypsum fixed at 4%. Not plant data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="career" id="career">
+  <div class="in">
+    <div class="sec-head"><h2>Career</h2><span class="label">One industry, one arc</span></div>
+    <div class="row">
+      <div class="yr live">2026</div>
+      <div>
+        <h3>Manager, Production Process<span class="now">NOW</span></h3>
+        <p class="co">Confidence Cement PLC · from 1 Oct 2026</p>
+        <p>Owning production process performance at one of Bangladesh's established cement makers.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="yr">2017</div>
+      <div>
+        <h3>Deputy Manager, Production</h3>
+        <p class="co">LafargeHolcim Bangladesh PLC · to 27 Sep 2026</p>
+        <p>Joined as an intern and grew with the company to lead cement grinding across Meghnaghat Plants 1 and 2. Worked on clinker factor and SEEC optimization, S&amp;OP planning in SAP PP, debottlenecking projects and ISO-integrated management systems.</p>
+        <p>Founded the plant's Innovators Club and mentored its cross-functional members as president.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="in">
+    <div class="sec-head"><h2>Craft</h2><span class="label">What I work on</span></div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><span class="label">Material</span><div><h3>Clinker factor</h3><p>Balancing clinker, gypsum and supplementary materials so cement meets its targets with less clinker per tonne.</p></div></div>
+    <div class="tile"><span class="label">Energy</span><div><h3>SEEC</h3><p>Specific electrical energy of grinding in kWh per tonne, pushed down through mill and separator tuning.</p></div></div>
+    <div class="tile"><span class="label">Planning</span><div><h3>S&amp;OP</h3><p>Aligning demand, production and stock in SAP PP so the mills run the right grades at the right time.</p></div></div>
+    <div class="tile"><span class="label">Capacity</span><div><h3>Debottlenecking</h3><p>Finding the constraint in the circuit and removing it, project by project, with process and maintenance teams.</p></div></div>
+    <div class="tile"><span class="label">Systems</span><div><h3>ISO-integrated</h3><p>Running production inside integrated management systems so quality, safety and environment share one discipline.</p></div></div>
+    <div class="tile"><span class="label">Safety</span><div><h3>HFACS</h3><p>Human factors root cause analysis that traces incidents back to the conditions that let them happen.</p></div></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="in">
+    <div class="sec-head"><h2>Work</h2><span class="label">Where I have worked</span></div>
+    <div class="inst-list">
+      <article class="inst">
+        <div class="logo l-sun" aria-hidden="true">CC</div>
+        <div>
+          <h3>Confidence Cement PLC</h3>
+          <p class="role">Manager, Production Process</p>
+          <p class="when">1 Oct 2026 to now</p>
+        </div>
+      </article>
+      <article class="inst">
+        <div class="logo l-ink" aria-hidden="true">LH</div>
+        <div>
+          <h3>LafargeHolcim Bangladesh PLC</h3>
+          <p class="role">Intern to Deputy Manager, Production · Meghnaghat Plants 1 &amp; 2</p>
+          <p class="when">2017 to 27 Sep 2026</p>
+        </div>
+      </article>
+    </div>
+    <article class="proj">
+      <span class="label" style="color:var(--muted)">Engineering project</span>
+      <div class="num" style="margin-top:12px">1350<small>°C</small></div>
+      <h3>Chip-tool interface temperature measuring device</h3>
+      <p>A universal probe that measures the temperature where chip meets cutting tool during machining, up to 1350 °C, across different machining conditions. Designed and fabricated during my engineering studies.</p>
+    </article>
+  </div>
+</section>
+
+<section class="learn" id="education">
+  <div class="in">
+    <div class="sec-head"><h2>Education</h2><span class="label">Degrees, listed separately</span></div>
+    <div class="inst-list">
+      <article class="inst">
+        <div class="logo l-blue" aria-hidden="true">IBA</div>
+        <div>
+          <span class="label deg">Master's degree</span>
+          <h3>EMBA</h3>
+          <p class="role">Institute of Business Administration (IBA), University of Dhaka</p>
+        </div>
+      </article>
+      <article class="inst">
+        <div class="logo l-sun" aria-hidden="true">AUST</div>
+        <div>
+          <span class="label deg">Bachelor's degree</span>
+          <h3>B.Sc. Industrial &amp; Production Engineering</h3>
+          <p class="role">Ahsanullah University of Science and Technology (AUST)</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="learn train" id="training">
+  <div class="in">
+    <div class="sec-head"><h2>Training</h2><span class="label">Certificates and courses</span></div>
+    <div class="inst-list">
+      <article class="inst">
+        <div class="logo l-ink" aria-hidden="true">HFACS</div>
+        <div>
+          <h3>HFACS root cause analysis</h3>
+          <p class="role">Human Factors Analysis and Classification System</p>
+        </div>
+      </article>
+      <article class="inst">
+        <div class="logo l-red" aria-hidden="true">BRCS</div>
+        <div>
+          <h3>First Aid Training</h3>
+          <p class="role">Bangladesh Red Crescent Society (BRCS)</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact sun" id="contact">
+  <div class="in">
+    <span class="label">Contact</span>
+    <h2 style="margin-top:14px">Less clinker.<br><em>More cement.</em></h2>
+    <div class="cgrid">
+      <div class="item">
+        <span class="label">LinkedIn</span><br>
+        <a class="big-link" href="https://www.linkedin.com/in/kahinhasan/" target="_blank" rel="noopener">in/kahinhasan</a>
+      </div>
+      <div class="item">
+        <span class="label">Email</span>
+        <div class="mail"><code id="mail">kahin.hasan@gmail.com</code><button type="button" id="copy">Copy</button></div>
+      </div>
+    </div>
+    <footer>
+      <span class="label">Kahin Hasan · Chattogram</span>
+      <span class="label">Portfolio 2026</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+(function () {
+  /* ---------- clinker mix ---------- */
+  var cf = document.getElementById('cf');
+  function mix() {
+    var c = +cf.value, g = 4, s = 100 - c - g;
+    document.getElementById('cfv').textContent = c + '%';
+    document.getElementById('bcl').style.width = c + '%';
+    document.getElementById('bsc').style.width = s + '%';
+    document.getElementById('lcl').textContent = c;
+    document.getElementById('lsc').textContent = s;
+    document.getElementById('readout').textContent = 'At ' + c + '% clinker, ' + s + '% of every tonne is supplementary material. Less clinker per tonne means less kiln fuel and CO₂ per tonne, so this ratio sits at the centre of the work.';
+  }
+  cf.addEventListener('input', mix); mix();
+
+  /* ---------- ball mill ---------- */
+  var cv = document.getElementById('mill'), ctx = cv.getContext('2d');
+  var S = 460, CX = 230, CY = 230, RD = 212, G = 900;
+  var dpr = Math.min(2, window.devicePixelRatio || 1);
+  cv.width = cv.height = S * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var WC = Math.sqrt(G / (RD - 12));
+  var seed = 11;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  var balls = [], i, j;
+  var cols = ['#B8BAB4', '#ECEDE8', '#5C74FF'];
+  for (i = 0; i < 44; i++) {
+    var a = 0.15 * Math.PI + rnd() * 0.7 * Math.PI, rr = 20 + rnd() * (RD - 60), r = 10 + rnd() * 5;
+    balls.push({ x: CX + Math.cos(a) * rr * 0.9, y: CY + Math.sin(a) * rr * 0.9, vx: 0, vy: 0, r: r, c: cols[i % 3] });
+  }
+  var pct = 75, ang = 0;
+  function step(dt) {
+    var om = pct / 100 * WC, b, o, dx, dy, d, nx, ny, vn, vt, tx, ty, md, k;
+    ang += om * dt;
+    for (i = 0; i < balls.length; i++) {
+      b = balls[i];
+      b.vy += G * dt; b.x += b.vx * dt; b.y += b.vy * dt;
+      dx = b.x - CX; dy = b.y - CY; d = Math.sqrt(dx * dx + dy * dy); md = RD - b.r;
+      if (d > md) {
+        nx = dx / d; ny = dy / d;
+        b.x = CX + nx * md; b.y = CY + ny * md;
+        vn = b.vx * nx + b.vy * ny;
+        if (vn > 0) { b.vx -= 1.2 * vn * nx; b.vy -= 1.2 * vn * ny; }
+        tx = -ny; ty = nx;
+        vt = b.vx * tx + b.vy * ty;
+        k = 0.16;
+        b.vx += (om * RD - vt) * k * tx; b.vy += (om * RD - vt) * k * ty;
+      }
+    }
+    for (i = 0; i < balls.length; i++) {
+      for (j = i + 1; j < balls.length; j++) {
+        b = balls[i]; o = balls[j];
+        dx = o.x - b.x; dy = o.y - b.y; d = Math.sqrt(dx * dx + dy * dy);
+        var min = b.r + o.r;
+        if (d < min && d > 0.0001) {
+          nx = dx / d; ny = dy / d;
+          var ov = (min - d) / 2;
+          b.x -= nx * ov; b.y -= ny * ov; o.x += nx * ov; o.y += ny * ov;
+          var rv = (o.vx - b.vx) * nx + (o.vy - b.vy) * ny;
+          if (rv < 0) {
+            var imp = -(1.25) * rv / 2;
+            b.vx -= imp * nx; b.vy -= imp * ny; o.vx += imp * nx; o.vy += imp * ny;
+          }
+        }
+      }
+    }
+  }
+  function draw() {
+    ctx.clearRect(0, 0, S, S);
+    ctx.beginPath(); ctx.arc(CX, CY, RD + 6, 0, 6.2832);
+    ctx.fillStyle = '#131B25'; ctx.fill();
+    ctx.lineWidth = 6; ctx.strokeStyle = '#ECEDE8'; ctx.stroke();
+    ctx.lineWidth = 7; ctx.strokeStyle = '#B8BAB4'; ctx.lineCap = 'butt';
+    for (var k = 0; k < 10; k++) {
+      var t = ang + k * Math.PI / 5, c = Math.cos(t), s = Math.sin(t);
+      ctx.beginPath(); ctx.moveTo(CX + c * RD, CY + s * RD); ctx.lineTo(CX + c * (RD - 16), CY + s * (RD - 16)); ctx.stroke();
+    }
+    ctx.lineWidth = 1.5; ctx.strokeStyle = '#0C1118';
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.2832); ctx.fillStyle = b.c; ctx.fill(); ctx.stroke();
+    }
+    ctx.fillStyle = '#98A3AE'; ctx.fillRect(CX - 8, CY - 1, 16, 2); ctx.fillRect(CX - 1, CY - 8, 2, 16);
+  }
+  function frame() { for (var q = 0; q < 3; q++) step(1 / 180); draw(); }
+  function settle(n) { for (var q = 0; q < n; q++) step(1 / 180); draw(); }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var running = false, raf = 0, last = 0;
+  function loop(ts) {
+    if (!running) return;
+    if (ts - last > 14) { frame(); last = ts; }
+    raf = requestAnimationFrame(loop);
+  }
+  function start() { if (!running && !reduce) { running = true; raf = requestAnimationFrame(loop); } }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+  settle(400);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { e[0].isIntersecting ? start() : stop(); }, { threshold: 0.05 }).observe(cv);
+  } else { start(); }
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+
+  var spd = document.getElementById('spd');
+  function speed() {
+    pct = +spd.value;
+    document.getElementById('spdv').textContent = pct + '%';
+    var rg = document.getElementById('regime'), nt = document.getElementById('rnote');
+    if (pct < 60) { rg.textContent = 'Cascading'; nt.textContent = 'Balls roll down the slope of the charge. Low impact, slow grinding. Throughput suffers.'; }
+    else if (pct <= 95) { rg.textContent = 'Cataracting'; nt.textContent = 'Balls are carried high and thrown across the drum. Strong impact grinding. Mills are typically run around 70 to 80% of critical speed.'; }
+    else { rg.textContent = 'Centrifuging'; nt.textContent = 'Balls pin to the shell and ride around with it. Almost no grinding happens. This is the speed to stay away from.'; }
+    if (reduce) settle(300);
+  }
+  spd.addEventListener('input', speed); speed();
+
+  /* ---------- copy ---------- */
+  var btn = document.getElementById('copy');
+  btn.addEventListener('click', function () {
+    var el = document.getElementById('mail');
+    function pick() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      btn.textContent = 'Selected';
+    }
+    try {
+      navigator.clipboard.writeText(el.textContent).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+      }, pick);
+    } catch (e) { pick(); }
+  });
+})();
+</script>
+
+</body></html>
